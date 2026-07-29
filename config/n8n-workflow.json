@@ -1,0 +1,47 @@
+{
+  "nodes": [
+    {
+      "id": "Webhook_Trigger",
+      "type": "webhook",
+      "name": "Retell Webhook",
+      "parameters": {
+        "path": "retell-call",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "Google_Sheets",
+      "type": "googleSheets",
+      "name": "Log to Google Sheets",
+      "parameters": {
+        "operation": "append",
+        "sheetId": "your-google-sheet-id",
+        "range": "Leads!A1",
+        "valueInputMode": "RAW"
+      }
+    },
+    {
+      "id": "Calendly_Booking",
+      "type": "httpRequest",
+      "name": "Create Booking in Calendly",
+      "parameters": {
+        "url": "https://api.calendly.com/scheduled_events",
+        "method": "POST",
+        "json": {
+          "invitee": "={{$json[\"caller_email\"]}}",
+          "event_type": "15-min-display-suite"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook_Trigger": {
+      "main": [
+        [
+          { "node": "Google_Sheets", "type": "main", "index": 0 },
+          { "node": "Calendly_Booking", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  }
+}
