@@ -1,10 +1,10 @@
 # Switchboard
 
-An AI agent that runs the phones for real-estate sales teams. It answers every inbound call, qualifies buyers through structured questions, books inspections into real calendar slots and logs a structured summary of every conversation with the transcript and recording attached.
+An AI agent that runs the phones for front office sales teams. It answers every inbound call, qualifies buyers through structured questions, books inspections into real calendar slots and logs a structured summary of every conversation with the transcript and recording attached.
 
 ## Problem
 
-A Melbourne property developer was missing inbound sales calls after hours and during peak periods. Every missed call was a lost lead, and staffing the phones around the clock was not viable.
+A Melbourne high ticket sales business was missing inbound sales calls after hours and during peak periods. Every missed call was a lost lead, and staffing the phones around the clock was not viable.
 
 ## Build
 
@@ -16,9 +16,9 @@ A Melbourne property developer was missing inbound sales calls after hours and d
 
 ## The prompt does the heavy lifting
 
-[prompts/system-prompt.txt](prompts/system-prompt.txt) is the production system prompt, templated for reuse. If you are building voice agents it is the most useful file in this repo:
+[prompts/system-prompt.txt](prompts/system-prompt.txt) is the production system prompt, templated for reuse. If you are building voice agents it is a useful place to start prompting:
 
-- Slot capture, one question at a time, into a strict JSON schema: budget band, bedrooms, parking, timeframe, finance status, owner-occupier or investor, suburbs
+- Slot capture, one question at a time, into a strict JSON schema: budget band, parking, timeframe, finance status, suburbs
 - Pronunciation rules for prices and phone numbers in Australian English
 - Small talk handled with a two turn budget, then a polite steer back to qualification
 - Barge-in allowed, four second silence recovery, out of scope requests get a referral instead of an improvised answer
